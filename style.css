@@ -1,0 +1,154 @@
+/* Basic reset */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Background with overlay */
+.back {
+  position: relative;
+  background-image: url("back.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: white;
+
+  /* Flexbox to center content vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 60px; /* navbar*/
+  padding-bottom: 40px;
+  text-align: center;
+
+  z-index: 0;
+}
+
+.back::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Navbar */
+.my-nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.my-logo {
+  margin-right: 50px;
+  height: 30px;
+  width: 70px;
+  object-fit: contain;
+}
+
+.my-link {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.my-link li a {
+  margin-top: 5px;
+  margin-right: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: border-bottom 0.3s ease;
+}
+
+.my-link li a:hover {
+  border-bottom: 5px dotted green;
+}
+
+/* Main content */
+.main-section {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+.hello {
+  color: greenyellow;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.type-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Typing animation */
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid white;
+  color: white;
+  font-size: 50px;
+  width: 0;
+  animation: typing 3s steps(9, end) forwards;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes typing {
+  from { width: 0ch; }
+  to { width: 10ch; }
+}
+
+/* Social icons */
+.icons i {
+  color: white;
+  font-size: 30px;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icons i:hover {
+  color: #00ff00;
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .my-nav {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .my-link {
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .typing-text {
+    font-size: 30px;
+  }
+}
